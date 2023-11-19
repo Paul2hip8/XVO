@@ -6,3 +6,14 @@ Additional Download Install/Setup Requirements
 Run 'python setup.py install' in .\model\correlation_package
 -conda install timm
 -conda install pandas
+
+-----params.py -----
+n_processors changed to 12 from 16
+
+
+-----test.py-----
+#scene_num = dir.split('/')[-1].split('.')[0]
+scene_num = os.path.basename(dir).split('.')[0]
+
+#gt_pose_path = './vo-eval-tool/dataset/kitti/gt_poses/' + dir.split('/')[-1]
+gt_pose_path = os.path.join('vo-eval-tool', 'dataset', 'kitti', 'gt_poses', scene_num + '.txt')
