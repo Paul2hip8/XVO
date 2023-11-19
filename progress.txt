@@ -1,0 +1,8 @@
+I'm going to keep track of basic progress of the project to add to the report/readme
+
+
+Additional Download Install/Setup Requirements
+
+Run 'python setup.py install' in .\model\correlation_package
+-conda install timm
+-conda install pandas

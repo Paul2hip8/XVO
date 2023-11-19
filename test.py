@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "1" 
+## os.environ["CUDA_VISIBLE_DEVICES"] = "1" 
 from params import par
 from model import *
 import numpy as np
@@ -25,13 +25,15 @@ def plot_route(ax, x_gt, z_gt, x_est, z_est, method, sequence, color, descriptio
 
 def visualizer():
 
-    poses_dir = glob.glob('./results/KITTI/*.txt')
+    poses_dir = glob.glob('./results/*.txt')
 
     for dir in poses_dir:
 
-        scene_num = dir.split('/')[-1].split('.')[0]
+        #scene_num = dir.split('/')[-1].split('.')[0]
+        scene_num = os.path.basename(dir).split('.')[0]
 
-        gt_pose_path = './vo-eval-tool/dataset/kitti/gt_poses/' + dir.split('/')[-1]
+        #gt_pose_path = './vo-eval-tool/dataset/kitti/gt_poses/' + dir.split('/')[-1]
+        gt_pose_path = os.path.join('vo-eval-tool', 'dataset', 'kitti', 'gt_poses', scene_num + '.txt')
 
         with open(gt_pose_path) as f:
             gt_poses = np.array([[float(x) for x in line.split()] for line in f], dtype=np.float32)
